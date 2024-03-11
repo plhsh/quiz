@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Пример Сайта</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .top {
+            background-color: #4682B4;
+            height: 30%;
+        }
+
+        .middle {
+            background-color: white;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: top;
+            align-items: center;
+        }
+
+        .bottom {
+            background-color: #003366;
+            height: 10%;
+        }
+
+        p {
+            font-size: 20px; /* Увеличение размера шрифта до 18 пикселей */
+        }
+
+        button {
+            background-color: #003366; /* Синий фон */
+            color: white; /* Белый текст */
+            padding: 10px 20px; /* Увеличенный размер */
+            font-size: 16px; /* Увеличенный размер шрифта */
+            border: none; /* Убрать границу */
+            border-radius: 5px; /* Скругленные углы */
+            cursor: pointer; /* Курсор в виде руки при наведении */
+        }
+
+        button:hover {
+            background-color: blue; /* Чуть более темный оттенок синего при наведении */
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <!-- Содержимое верхней части -->
+    </div>
+    <div class="middle">
+    <h1>Предварительный расчет стоимости</h1>
+    <p> {{ price }} </p>
+    <!-- Кнопка Закрыть, перенаправляющая на главную страницу -->
+    <a href="https://vm4944079.25ssd.had.wf" style="text-decoration: none;">
+        <button type="button">Закрыть</button>
+    </a>
+    </div>
+    <div class="bottom">
+        <!-- Содержимое нижней части -->
+    </div>
+</body>
+</html>

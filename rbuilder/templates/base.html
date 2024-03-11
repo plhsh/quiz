@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nextremum</title>
+    {% load static %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="bg-white">
+    <div class="container py-3">
+        <div class="d-flex align-items-center">
+            <div class="button-container">
+                <button class="btn"><img src="{% static 'images/image.png' %}" alt="Button Image" style="width: 200px; height: auto;"></button>
+                <button class="btn"><img src="{% static 'images/image1.png' %}" alt="Button Image" style="width: 40px; height: auto;"></button>
+                <button class="btn"><img src="{% static 'images/image2.png' %}" alt="Button Image" style="width: 40px; height: auto;"></button>
+                <!-- Add more buttons as needed -->
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- failed attempt to move buttons to the right
+<header class="bg-white">
+    <div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="button-container">
+                <button class="btn"><img src="image.png" alt="Button Image"></button>
+            </div>
+        </div>
+        <div class="col-3"></div>
+        <div class="col">
+            <div class="button-container-right">
+                <button class="btn"><img src="image2.png" alt="Button Image"></button>
+                <button class="btn"><img src="image1.png" alt="Button Image"></button>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+-->
+
+
+
+<section class="blue-stripe-section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="blue-stripe">
+                    <span class="stripe-text">Home</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container mt-4">
+    <div class="row">
+        <div class="col">
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+</section>
+
+<footer class="custom-footer">
+    <div class="container">
+        <div class="row justify-content-between justify-content-between">
+            <div class="col-xl-4 col-md-4 col-sm-12">
+                <button class="btn"><img src="{% static 'images/image3.png' %}" alt="Button Image" style="width: 200px; height: auto;"></button>
+                <p class="footer-text">Nextremum, 2024</p>
+            </div>
+            <div class="col-xl-2 d-none d-xl-block"></div>
+            <div class="col-xl-2 d-none d-xl-block"></div>
+            <div class="col-xl-2 col-md-4 col-sm-12">
+                <div class="footer-info">
+                    <p>Nextremum Czech Republic:<br> +420 511 440 731</p>
+                    <p>Nextremum Serbia:<br>+7 495 241 27 31</p>
+                    <p>Nextremum Russia:<br>+381 11 422 30 31</p>
+                </div>
+            </div>
+            <div class="col-xl-2 col-md-4 col-sm-12">
+                <div class="footer-info">
+                    <p>E-mail:<br>market@nextremum.net</p>
+                    <p>NOC:<br>helpdesk@nextremum.net</p>
+                    <p>Follow us:<br> LinkedIn   Facebook</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<script src="{% static 'js/bootstrap.bundle.min.js $}"></script>
+</body>
+</html>

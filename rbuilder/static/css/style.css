@@ -1,0 +1,124 @@
+:root{
+    --color-blue: #14406D;
+    --gray-white: #ffffff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+}
+
+.file-name {
+    margin-right: auto;
+}
+
+/*FOOTER*/
+
+.custom-footer {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 40px;
+    background-color: var(--color-blue);
+}
+
+.footer-text {
+    margin-top: 0px;
+    margin-right: 0;
+    margin-left: 80px;
+    color: var(--gray-white);
+    font-size: 12px;
+    line-height: 1.5;
+
+    border-color: transparent;
+    border-style: solid;
+}
+
+.footer-info p {
+    margin-top: 10px;
+    margin-right: 0;
+    margin-left: 0;
+    color: var(--gray-white);
+    font-size: 12px;
+    line-height: 1.5;
+
+    border-color: transparent;
+    border-style: solid;
+}
+
+
+/*BUTTONS*/
+
+.button-container {
+    display: flex;
+    margin-left: 0px;
+}
+
+.button-container-right {
+    display: flex;
+    margin-right: 10px;
+}
+
+.custom-button {
+    background: none;
+    border: none;
+    padding-top: 120px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 50px;
+    font-size: 16px
+    cursor: pointer;
+}
+
+
+
+/*STRIPE*/
+
+.blue-stripe-section {
+    padding: 10px; /* Adjust padding as needed */
+    margin: 20px; /* Add margin from edges */
+    border-radius: 5px;
+    background-image: linear-gradient(0.84608995917402turn, rgba(55, 164, 218, 1) 0%, rgba(36, 90, 155, 1) 99%);
+    border-color: transparent;
+    /*border-style: solid;*/
+}
+
+.blue-stripe {
+    display: flex;
+    align-items: center;
+}
+
+.stripe-text {
+    color: var(--gray-white);
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 400;
+    border-radius: 30px;
+    opacity: 0.65;
+    background-position: center center;
+    border-color: transparent;
+    border-style: solid;
+    margin-right: auto; /* Push text to the left side */
+}
+
+
+
+
+
+.stripe-text {
+    color: white;
+    font-size: 16px; /* Adjust font size as needed */
+    margin-right: auto; /* Push text to the left side */
+}*/
