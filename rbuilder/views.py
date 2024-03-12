@@ -49,8 +49,8 @@ def add_quotation(request):
 def add_quotation_cities(request):
     if request.method == 'POST':
         try:
-            f_addr_1 = request.POST.get('loc_1')
-            f_addr_2 = request.POST.get('loc_2')
+            f_addr_1 = request.POST.get('address_a')
+            f_addr_2 = request.POST.get('address_b')
 
             loc_1 = Locations.objects.get(pk=f_addr_1)  # подтягиваем из запроса нужные данные
             loc_2 = Locations.objects.get(pk=f_addr_2)  # подтягиваем из запроса нужные данные
