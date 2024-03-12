@@ -37,8 +37,12 @@ class QuotationsForm(forms.ModelForm):
 
 class LocationsForm(DynamicFormMixin, forms.Form):
 
-    def addresses_choices(self, ct):
-        city = self[ct].value()
+    def addresses_choices_a(self):
+        city = self['city_a'].value()
+        return Locations.objects.filter(ct=city)
+
+    def addresses_choices_b(self):
+        city = self['city_b'].value()
         return Locations.objects.filter(ct=city)
 
     cities_names = Cities.objects.all()
@@ -49,11 +53,20 @@ class LocationsForm(DynamicFormMixin, forms.Form):
     city_b = forms.ModelChoiceField(queryset=cities_names,
                                     initial=cities_names[0],
                                     label="City B")
-    addresses_a = addresses_choices(form, 'city_a')
+
     address_a = DynamicField(
-       forms.ModelChoiceField,
-       queryset=addresses_a,
+        forms.ModelChoiceField,
+        queryset=addresses_choices_a,
     )
+
+    address_b = DynamicField(
+        forms.ModelChoiceField,
+        queryset=addresses_choices_b,
+    )
+
+    bandwidth = forms.ChoiceField(choices=[(100, '100'), (1, '1'), (10, '10')], label='Speed')
+    email = forms.EmailField(required=False, label='Email')
+
        # queryset=Locations.objects.filter(ct=self['city_a'].value())
 
 

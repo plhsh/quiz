@@ -1,47 +1,51 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nextremum</title>
-
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% load static %}
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <script src="https://unpkg.com/htmx.org"></script>
 </head>
 <body>
 
-
-<header class="header">
-    <div class="container">
-        <div class="row">
-            <!-- First column-->
-            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6">
-                <a href="https://nextremum.net/">
-                    <img src="{% static 'images/image.png' %}" alt="Picture 1" style="width: 200px; height: auto;" class="img-fluid">
-                </a>
-            </div>
-
-            <!-- Second column-->
-
-            <div class="col-xl-8 d-none d-xl-block pages-text">
-                <a class="black-text" href="https://nextremum.net/#services">Services</a>
-                <a class="black-text" href="https://nextremum.net/areas">Solutions</a>
-                <a class="black-text" href="https://nextremum.net/map">Points of Presence</a>
-                <a class="black-text" href="https://nextremum.net/about-nextremum">About Nextremum</a>
-                <a class="black-text" href="https://nextremum.net/contacts">Contacts</a>
-            </div>
-
-            <!-- Third column-->
-            <div class="col-xl-2 col-md-4 d-flex flex-row">
-                <a href="#" class="mr-2"><img src="{% static 'images/image1.png' %}" alt="Picture 2" style="width: 40px; height: auto;" class="img-fluid"></a>
-                <a href="#" class="mr-2"><img src="{% static 'images/image2.png' %}" alt="Picture 3" style="width: 40px; height: auto;" class="img-fluid"></a>
-                <a href="#"><img src="{% static 'images/image4.png' %}" alt="Picture 4" style="width: 100px; height: auto;" class="img-fluid"></a>
+<header class="bg-white">
+    <div class="container py-3">
+        <div class="d-flex align-items-center">
+            <div class="button-container">
+                <button class="btn"><img src="{% static 'images/image.png' %}" alt="Button Image" style="width: 200px; height: auto;"></button>
+                <button class="btn"><img src="{% static 'images/image1.png' %}" alt="Button Image" style="width: 40px; height: auto;"></button>
+                <button class="btn"><img src="{% static 'images/image2.png' %}" alt="Button Image" style="width: 40px; height: auto;"></button>
+                <!-- Add more buttons as needed -->
             </div>
         </div>
     </div>
 </header>
+
+<!-- failed attempt to move buttons to the right
+<header class="bg-white">
+    <div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="button-container">
+                <button class="btn"><img src="image.png" alt="Button Image"></button>
+            </div>
+        </div>
+        <div class="col-3"></div>
+        <div class="col">
+            <div class="button-container-right">
+                <button class="btn"><img src="image2.png" alt="Button Image"></button>
+                <button class="btn"><img src="image1.png" alt="Button Image"></button>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
+-->
+
+
 
 <section class="blue-stripe-section">
     <div class="container">
@@ -65,11 +69,9 @@
 
 <footer class="custom-footer">
     <div class="container">
-        <div class="row">
+        <div class="row justify-content-between justify-content-between">
             <div class="col-xl-4 col-md-4 col-sm-12">
-                <a href="https://nextremum.net/">
-                    <img src="{% static 'images/image3.png' %}" alt="Button Image" style="width: 200px; height: auto;">
-                </a>
+                <button class="btn"><img src="{% static 'images/image3.png' %}" alt="Button Image" style="width: 200px; height: auto;"></button>
                 <p class="footer-text">Nextremum, 2024</p>
             </div>
             <div class="col-xl-2 d-none d-xl-block"></div>

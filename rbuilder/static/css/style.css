@@ -121,4 +121,15 @@ header {
     color: white;
     font-size: 16px; /* Adjust font size as needed */
     margin-right: auto; /* Push text to the left side */
-}*/
+}
+
+.black-text {
+    color: black;
+    font-size: 16px; /* Adjust font size as needed */
+    margin-right: auto; /* Push text to the left side */
+    margin-top: 10px; /* Add top margin */
+    margin-bottom: 10px; /* Add bottom margin */
+    margin-left: 40px; /* Add left margin */
+}
+
+*/
