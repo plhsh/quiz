@@ -2,10 +2,10 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt # нужно обязательно это будет убрать. Отключает csrf проверку
 from django.db.models import Q
-from rbuilder.models import Locations, Links, Quotations
+from rbuilder.models import Locations, Links, Quotations, Cities
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from rbuilder.forms import QuotationsForm, CitiesQuotationsForm
+from rbuilder.forms import QuotationsForm, LocationsForm #, CitiesQuotationsForm
 
 
 def get_price(loc_1, loc_2, bandwidth):
@@ -73,8 +73,18 @@ def add_quotation_cities(request):
             # Возвращаем сообщение об ошибке или перенаправляем на страницу с ошибкой
             return HttpResponse(f"Произошла ошибка при обработке вашего запроса.{e}  {price}", status=500)
     if request.method == 'GET':
-        form = CitiesQuotationsForm()
-        return render(request, 'quotation.html', {'form': form})
+        form = LocationsForm()
+        return render(request, 'quotation_cities.html', {'form': form})
+
+
+def get_addresses(request):
+    form = LocationsForm(request.GET)
+    if request.META['HTTP_HX_TARGET'] == "id_address_a":
+        return HttpResponse(form['address_a'])
+    else:
+        return HttpResponse(form['address_b'])
+
+
 
 
 # mock for tests

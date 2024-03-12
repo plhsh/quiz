@@ -1,16 +1,25 @@
 from django.db import models
 
 
+class Cities(models.Model):
+    city = models.CharField(max_length=128, verbose_name="Город")
+
+    def __str__(self):
+        return self.city
+
+
 class Locations(models.Model):
     region = models.CharField(max_length=20, verbose_name="Регион")
     country = models.CharField(max_length=3, verbose_name="Страна")
     city = models.CharField(max_length=3, verbose_name="Город")
     addr = models.CharField(max_length=4, verbose_name="Адрес")
     full_address = models.CharField(max_length=12, blank=True)
+    ct = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='city_by_address', blank=True, verbose_name='city id')
 
-    def save(self, *args, **kwargs):
-        self.full_address = f"{self.country}.{self.city}.{self.addr}"
-        super().save(*args, **kwargs)
+
+    # def save(self, *args, **kwargs):
+    #     self.full_address = f"{self.country}.{self.city}.{self.addr}"
+    #     super().save(*args, **kwargs)
 
     def __str__(self):
         return self.full_address
