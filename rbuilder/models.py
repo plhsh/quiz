@@ -9,11 +9,11 @@ class Cities(models.Model):
 
 
 class Locations(models.Model):
-    region = models.CharField(max_length=20, verbose_name="Region")
-    country = models.CharField(max_length=3, verbose_name="Country")
-    city = models.CharField(max_length=3, verbose_name="City")
-    addr = models.CharField(max_length=4, verbose_name="Address")
-    full_address = models.CharField(max_length=12, blank=True)
+    region = models.CharField(max_length=64, verbose_name="Region")
+    country = models.CharField(max_length=64, verbose_name="Country")
+    city = models.CharField(max_length=64, verbose_name="City")
+    addr = models.CharField(max_length=128, verbose_name="Address")
+    full_address = models.CharField(max_length=128, blank=True)
     ct = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='city_by_address', blank=True, verbose_name='city id')
 
 
