@@ -4,9 +4,9 @@ from dynamic_forms import DynamicField, DynamicFormMixin
 
 
 class QuotationsForm(forms.ModelForm):
-    loc_1 = forms.ModelChoiceField(queryset=Locations.objects.all(), label='Локация 1')
-    loc_2 = forms.ModelChoiceField(queryset=Locations.objects.all(), label='Локация 2')
-    bandwidth = forms.ChoiceField(choices=[(100, '100'), (1, '1'), (10, '10')], label='Скорость')
+    loc_1 = forms.ModelChoiceField(queryset=Locations.objects.all(), label='Location A')
+    loc_2 = forms.ModelChoiceField(queryset=Locations.objects.all(), label='Location B')
+    bandwidth = forms.ChoiceField(choices=[(100, '100'), (1, '1'), (10, '10')], label='Speed')
 
     class Meta:
         model = Quotations
@@ -57,11 +57,13 @@ class LocationsForm(DynamicFormMixin, forms.Form):
     address_a = DynamicField(
         forms.ModelChoiceField,
         queryset=addresses_choices_a,
+        label="Address A"
     )
 
     address_b = DynamicField(
         forms.ModelChoiceField,
         queryset=addresses_choices_b,
+        label="Address B"
     )
 
     bandwidth = forms.ChoiceField(choices=[(100, '100'), (1, '1'), (10, '10')], label='Speed')
