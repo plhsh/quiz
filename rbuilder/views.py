@@ -6,6 +6,10 @@ from rbuilder.models import Locations, Links, Quotations, Cities
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 from rbuilder.forms import QuotationsForm, LocationsForm #, CitiesQuotationsForm
+import logging
+
+
+logger = logging.getLogger('django')
 
 
 def get_price(loc_1, loc_2, bandwidth):
@@ -24,21 +28,20 @@ def add_quotation(request):
             loc_1 = Locations.objects.get(pk=f_addr_1)  # подтягиваем из запроса нужные данные
             loc_2 = Locations.objects.get(pk=f_addr_2)  # подтягиваем из запроса нужные данные
 
-            print(loc_1)
-            print(loc_2)
+            logger.debug(f"{loc_1}, {loc_2}")
 
             bandwidth = request.POST.get('bandwidth')
             email = request.POST.get('email')
 
             price = get_price(loc_1, loc_2, bandwidth)  # подтягиваем из ORM выбранную цену
-            print(price, "POST")
+            logger.debug(price)
 
             lead = Quotations.objects.create(loc_1=loc_1, loc_2=loc_2, bandwidth=bandwidth, email=email)
-            print(f"lead added to DB {lead}")
+            logger.info(f"lead added to DB {lead}")
 
             return render(request, 'price.html', {'price': str(price)})
         except Exception as e:
-            print(f"Ошибка: {e}")  # Логируем ошибку
+            logger.error(f"error: {e}")  # Логируем ошибку
             # Возвращаем сообщение об ошибке или перенаправляем на страницу с ошибкой
             return HttpResponse(f"Произошла ошибка при обработке вашего запроса.{e}  {price}", status=500)
     if request.method == 'GET':
@@ -55,21 +58,20 @@ def add_quotation_cities(request):
             loc_1 = Locations.objects.get(pk=f_addr_1)  # подтягиваем из запроса нужные данные
             loc_2 = Locations.objects.get(pk=f_addr_2)  # подтягиваем из запроса нужные данные
 
-            print(loc_1)
-            print(loc_2)
+            logger.debug(f"{loc_1}, {loc_2}")
 
             bandwidth = request.POST.get('bandwidth')
             email = request.POST.get('email')
 
             price = get_price(loc_1, loc_2, bandwidth)  # подтягиваем из ORM выбранную цену
-            print(price, "POST")
+            logger.debug(price)
 
             lead = Quotations.objects.create(loc_1=loc_1, loc_2=loc_2, bandwidth=bandwidth, email=email)
-            print(f"lead added to DB {lead}")
+            logger.info(f"lead added to DB {lead}")
 
             return render(request, 'price.html', {'price': str(price)})
         except Exception as e:
-            print(f"Ошибка: {e}")  # Логируем ошибку
+            logger.error(f"Ошибка: {e}")  # Логируем ошибку
             # Возвращаем сообщение об ошибке или перенаправляем на страницу с ошибкой
             return HttpResponse(f"Произошла ошибка при обработке вашего запроса.{e}  {price}", status=500)
     if request.method == 'GET':
@@ -85,13 +87,7 @@ def get_addresses(request):
         return HttpResponse(form['address_b'])
 
 
-
-
 # mock for tests
 def show_price(request):
     price = '100500'
     return HttpResponse(price)
-
-
-def index(request):
-    return HttpResponse("Здесть ничего нет : )")
