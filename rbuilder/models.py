@@ -32,7 +32,7 @@ class Links(models.Model):
     price = models.PositiveIntegerField(default=0, verbose_name='Цена')
 
     def __str__(self):
-        return f"Канал между {self.loc_1} и {self.loc_2} на скорости {self.bandwidth} доступен по цене {self.price} USD в месяц"
+        return f"Private channel between {self.loc_1} & {self.loc_2} at the speed of {self.bandwidth} is available at {self.price} USD per month"
 
     def get_pair(self):
         return [self.loc_1, self.loc_2]
