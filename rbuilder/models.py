@@ -2,19 +2,17 @@ from django.db import models
 
 
 class Cities(models.Model):
-    city = models.CharField(max_length=128, verbose_name="Город")
+    city = models.CharField(max_length=128, verbose_name="City")
+    country = models.CharField(max_length=64, blank=True, default='', verbose_name="Country")
+    region = models.CharField(max_length=64, blank=True, default='', verbose_name="Region")
 
     def __str__(self):
         return self.city
 
 
 class Locations(models.Model):
-    region = models.CharField(max_length=64, verbose_name="Region")
-    country = models.CharField(max_length=64, verbose_name="Country")
-    city = models.CharField(max_length=64, verbose_name="City")
-    addr = models.CharField(max_length=128, verbose_name="Address")
-    full_address = models.CharField(max_length=128, blank=True)
-    ct = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='city_by_address', blank=True, verbose_name='city id')
+    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='city_by_address', blank=True, verbose_name='city id')
+    address = models.CharField(max_length=128, verbose_name="Address")
 
 
     # def save(self, *args, **kwargs):
@@ -22,7 +20,7 @@ class Locations(models.Model):
     #     super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.full_address
+        return f"{self.city_id.city}.{self.address}"
 
 
 class Links(models.Model):

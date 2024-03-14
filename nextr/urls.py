@@ -23,7 +23,6 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path('admin/', admin.site.urls),
     path('', views.add_quotation_cities, name='add_quotation_cities'),
-    path('simple-choices/', views.add_quotation, name='add_quotation'),
     path('get_addresses/', views.get_addresses, name='get_addresses'),
     path('price/', views.show_price, name='price') # mock for tests
 
