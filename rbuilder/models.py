@@ -11,7 +11,7 @@ class Cities(models.Model):
 
 
 class Locations(models.Model):
-    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='city_by_address', blank=True, verbose_name='city id')
+    city_id = models.ForeignKey(Cities, on_delete=models.CASCADE, related_name='addresses_by_city', blank=True, verbose_name='city id')
     address = models.CharField(max_length=128, verbose_name="Address")
 
 

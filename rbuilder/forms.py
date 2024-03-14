@@ -36,3 +36,18 @@ class LocationsForm(DynamicFormMixin, forms.Form):
 
     bandwidth = forms.ChoiceField(choices=[(100, '100'), (1, '1'), (10, '10')], label='Speed')
     email = forms.EmailField(required=False, label='Email')
+
+
+class AddressForm(forms.Form):
+    address = forms.ChoiceField()
+
+    def __init__(self, *args, **kwargs):
+        super(AddressForm, self).__init__(*args, **kwargs)
+        choices = [('', 'Выберите адрес...')]
+
+        for c in Cities.objects.all():
+            city_options = [(a.pk, f"--- {a.address}") for a in c.addresses_by_city.all()]
+            if city_options:
+                choices.append((c.city, city_options))
+
+        self.fields['address'].choices = choices

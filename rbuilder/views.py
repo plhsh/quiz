@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.db.models import Q
 from rbuilder.models import Locations, Links, Quotations, Cities
 from django.urls import reverse_lazy
-from rbuilder.forms import LocationsForm
+from rbuilder.forms import LocationsForm, AddressForm
 import logging
 
 
@@ -58,3 +58,9 @@ def get_addresses(request):
 def show_price(request):
     price = '100500'
     return HttpResponse(price)
+
+
+def simple_form(request):
+    if request.method == 'GET':
+        form = AddressForm()
+        return render(request, 'quotation.html', {'form': form})
