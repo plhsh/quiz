@@ -24,8 +24,8 @@ class Locations(models.Model):
 
 
 class Links(models.Model):
-    loc_1 = models.ForeignKey(Locations, on_delete=models.PROTECT, related_name='links_loc_1')
-    loc_2 = models.ForeignKey(Locations, on_delete=models.PROTECT, related_name='links_loc_2')
+    loc_1 = models.ForeignKey(Locations, on_delete=models.PROTECT, related_name='links_loc_1', verbose_name='Address A')
+    loc_2 = models.ForeignKey(Locations, on_delete=models.PROTECT, related_name='links_loc_2', verbose_name='Address B')
     bandwidth = models.PositiveIntegerField(default=0, verbose_name='Speed')
     price = models.PositiveIntegerField(default=0, verbose_name='Price')
 
