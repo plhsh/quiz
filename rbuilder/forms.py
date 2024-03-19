@@ -15,12 +15,15 @@ class LocationsForm(DynamicFormMixin, forms.Form):
 
     cities_names = Cities.objects.all()
 
-    city_a = forms.ModelChoiceField(queryset=cities_names,
-                                    initial=cities_names[0],
-                                    label="City A")
-    city_b = forms.ModelChoiceField(queryset=cities_names,
-                                    initial=cities_names[0],
-                                    label="City B")
+    city_a = forms.ModelChoiceField(
+        queryset=cities_names,
+        initial=cities_names[0],
+        label="City A")
+
+    city_b = forms.ModelChoiceField(
+        queryset=cities_names,
+        initial=cities_names[0],
+        label="City B")
 
     address_a = DynamicField(
         forms.ModelChoiceField,
@@ -36,6 +39,13 @@ class LocationsForm(DynamicFormMixin, forms.Form):
 
     bandwidth = forms.ChoiceField(choices=[(100, '100'), (1, '1'), (10, '10')], label='Speed')
     email = forms.EmailField(required=False, label='Email')
+
+    # def __init__(self, *args, **kwargs):
+    #     initial_value = kwargs.pop('initial_value', None)
+    #     super().__init__(*args, **kwargs)
+    #     if initial_value:
+    #         print('got it!')
+    #         self.fields['city_a'].initial = initial_value
 
 
 class AddressForm(forms.Form):

@@ -1,0 +1,8 @@
+{% load widget_tweaks %}
+<div id="id_city_a_selects" class="col-xl-6 col-sm-12 text-left">
+    {{ form.city_a.label_tag }}
+    {% render_field form.city_a class="custom-select mb-4" autocomplete="off" hx-get="/get_addresses/" hx-target="#id_address_a" %}
+    <br>
+    {{ form.address_a.label_tag }}
+    {% render_field form.address_a class="custom-select mb-4" autocomplete="off" %}
+</div>

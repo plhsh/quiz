@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+{% load static %}
+<h1>Commercial offer request form</h1>
+
+<!--    <form action="" method="post" name="loc_1" hx-get="{% url 'get_addresses' %}" hx-trigger="change from:#id_loc_1" hx-target="#address-select">-->
+
+<form action="" method="post">
+
+    {% csrf_token %}
+
+    <section class="container mt-4">
+        <div class="row">
+            <div id="id_city_a_selects" class="col-xl-6 col-sm-12 text-left">
+                {{ form.city_a.label_tag }}
+                {% render_field form.city_a class="custom-select mb-4" autocomplete="off" hx-get="/get_addresses/" hx-target="#id_address_a" %}
+                <br>
+                {{ form.address_a.label_tag }}
+                {% render_field form.address_a class="custom-select mb-4" autocomplete="off" %}
+            </div>
+
+            <div class="col-xl-6 col-sm-12 text-left">
+                {{ form.city_b.label_tag }}
+                {% render_field form.city_b class="custom-select mb-4" autocomplete="off" hx-get="/get_addresses/" hx-target="#id_address_b" %}
+                <br>
+                {{ form.address_b.label_tag }}
+                {% render_field form.address_b class="custom-select mb-4" autocomplete="off" %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col text-left">
+                {{ form.bandwidth.label_tag }}
+                {% render_field form.bandwidth class="custom-select mb-4" autocomplete="off" %}
+                <br>
+                {{ form.email.label_tag }}
+                {% render_field form.email class="custom-select mb-4" autocomplete="off" %}
+                <br>
+                <input type="submit" value="Calculate">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+                <svg width="1200" height="800">
+                <image href="{% static 'images/locations.svg' %}" width="1200" height="800"/>
+
+                <a hx-get="/clicked/" hx-target="#id_city_a_selects" >
+                    <circle cx="29%" cy="25%" r="1%" fill="green" stroke="black" stroke-width="2"/>
+        <!--        <text x="130" y="136" text-anchor="middle" fill="black">MDN</text>-->
+                </a>
+                <a href="">
+                    <circle cx="16%" cy="32%" r="1%" fill="green" stroke="black" stroke-width="2"/>
+        <!--        <text x="130" y="136" text-anchor="middle" fill="black">MDN</text>-->
+                </a>
+                </svg>
+
+<!--        <img src="{% static 'images/locations.svg' %}" width="1000" height="600" usemap="#mymap">-->
+<!--        <map id="mymap">-->
+<!--        <area shape="circle" coords="130,136,60" href="#" target="_blank" alt="MDN">-->
+<!--        </map>-->
+        <br>
+            </div>
+        </div>
+    </section>
+</form>
+
+{% endblock %}
+
+
+
+
+
+
+

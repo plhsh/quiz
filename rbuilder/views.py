@@ -7,6 +7,7 @@ from rbuilder.forms import LocationsForm, AddressForm
 import logging
 
 
+
 logger = logging.getLogger('django')
 
 
@@ -43,7 +44,7 @@ def add_quotation_cities(request):
             return HttpResponse(f"Произошла ошибка при обработке вашего запроса.{e}  {price}", status=500)
     if request.method == 'GET':
         form = LocationsForm()
-        return render(request, 'quotation_cities.html', {'form': form})
+        return render(request, 'quotation_test.html', {'form': form})
 
 
 def get_addresses(request):
@@ -52,6 +53,22 @@ def get_addresses(request):
         return HttpResponse(form['address_a'])
     else:
         return HttpResponse(form['address_b'])
+
+
+def clicked(request):
+
+    if request.META['HTTP_HX_TARGET'] == "id_city_a_selects":
+        ct = Cities.objects.filter(pk=8).first()
+        print(ct)
+        form = LocationsForm(initial={"city_a": ct})
+
+        print("after", form.fields['address_a'].__dict__)
+        print(form['city_a'])
+
+        return render(request, 'city_a_partial.html', {"form": form})
+        # return HttpResponse(form['address_a'])
+    else:
+        return HttpResponse("other text")
 
 
 # mock for tests
