@@ -10,7 +10,7 @@ body {
 
 header {
     background-color: white;
-    padding: 10px 20px;
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,6 +25,15 @@ header {
     margin-right: auto;
 }
 
+/*HEADER*/
+.pages-text a {
+    color: black;
+    margin: 1000px 20px 20px;
+    text-decoration: none;
+}
+
+
+
 /*FOOTER*/
 
 .custom-footer {
@@ -36,12 +45,11 @@ header {
 
 .footer-text {
     margin-top: 0px;
-    margin-right: 0;
+    margin-right: 0px;
     margin-left: 80px;
     color: var(--gray-white);
     font-size: 12px;
     line-height: 1.5;
-
     border-color: transparent;
     border-style: solid;
 }
@@ -52,14 +60,37 @@ header {
     margin-left: 0;
     color: var(--gray-white);
     font-size: 12px;
-    line-height: 1.5;
+    line-height: 2.5;
 
     border-color: transparent;
     border-style: solid;
 }
 
+.footer-info a {
+    color: white;
+    font-size: 18px;
+    line-height: 1;
+    text-decoration: none;
+}
 
-/*BUTTONS*/
+
+.bottom-footer {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    color: white;
+    background-color: black;
+}
+
+.bottom-footer a {
+    padding-left: 5px;
+    padding-right: 5px;
+
+    color: white;
+    text-decoration: none;
+}
+
+/*BUTTONS
 
 .button-container {
     display: flex;
@@ -79,8 +110,8 @@ header {
     padding-left: 10px;
     padding-right: 50px;
     font-size: 16px
-    cursor: pointer;
-}
+    cursor: pointer;*/
+
 
 
 
@@ -92,7 +123,6 @@ header {
     border-radius: 5px;
     background-image: linear-gradient(0.84608995917402turn, rgba(55, 164, 218, 1) 0%, rgba(36, 90, 155, 1) 99%);
     border-color: transparent;
-    /*border-style: solid;*/
 }
 
 .blue-stripe {
@@ -123,16 +153,7 @@ header {
     margin-right: auto; /* Push text to the left side */
 }
 
-.black-text {
-    color: black;
-    font-size: 16px; /* Adjust font size as needed */
-    margin-right: auto; /* Push text to the left side */
-    margin-top: 10px; /* Add top margin */
-    margin-bottom: 10px; /* Add bottom margin */
-    margin-left: 40px; /* Add left margin */
-}
-
-button {
+input[type="submit"] {
     background-color: #003366; /* Синий фон */
     color: white; /* Белый текст */
     padding: 10px 20px; /* Увеличенный размер */
@@ -142,8 +163,10 @@ button {
     cursor: pointer; /* Курсор в виде руки при наведении */
 }
 
-button:hover {
+input[type="submit"]:hover {
     background-color: blue; /* Чуть более темный оттенок синего при наведении */
 }
+
+
 
 */
