@@ -36,7 +36,8 @@ def add_quotation_cities(request):
             lead = Quotations.objects.create(loc_1=loc_1, loc_2=loc_2, bandwidth=bandwidth, email=email)
             logger.info(f"lead added to DB {lead}")
 
-            return render(request, 'price.html', {'price': str(price)})
+            return HttpResponse(str(price))
+            # return render(request, 'price.html', {'price': str(price)})
         except Exception as e:
             logger.error(f"Ошибка: {e}")  # Логируем ошибку
             # Возвращаем сообщение об ошибке или перенаправляем на страницу с ошибкой
