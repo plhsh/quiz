@@ -36,7 +36,7 @@ def add_quotation_cities(request):
             lead = Quotations.objects.create(loc_1=loc_1, loc_2=loc_2, bandwidth=bandwidth, email=email)
             logger.info(f"lead added to DB {lead}")
 
-            return HttpResponse(str(price))
+            return HttpResponse(price)
             # return render(request, 'price.html', {'price': str(price)})
         except Exception as e:
             logger.error(f"Ошибка: {e}")  # Логируем ошибку
@@ -48,11 +48,35 @@ def add_quotation_cities(request):
 
 
 def get_addresses(request):
-    form = LocationsForm(request.GET)
-    if request.META['HTTP_HX_TARGET'] == "id_address_a":
-        return HttpResponse(form['address_a'])
-    else:
-        return HttpResponse(form['address_b'])
+    if request.META['HTTP_HX_TARGET'] == "id_city_a_selects":
+        ct_a = request.GET.get('city_a')
+        # print(ct_a)
+        ct = Cities.objects.filter(pk=ct_a).first()
+        # print(ct)
+        form = LocationsForm(initial={"city_a": ct})
+        #
+        # print("after", form.fields['address_a'].__dict__)
+        # print(form['city_a'])
+        return render(request, 'partials/addresses_a.html', {"form": form})
+    elif request.META['HTTP_HX_TARGET'] == "id_city_b_selects":
+        ct_b = request.GET.get('city_b')
+        # print(ct_a)
+        ct = Cities.objects.filter(pk=ct_b).first()
+        # print(ct)
+        form = LocationsForm(initial={"city_b": ct})
+        #
+        # print("after", form.fields['address_a'].__dict__)
+        # print(form['city_a'])
+        return render(request, 'partials/addresses_b.html', {"form": form})
+    # form = LocationsForm(request.GET)
+    # if request.META['HTTP_HX_TARGET'] == "id_address_a":
+    #     return render(request, 'partials/addresses_a.html', {'form': form})
+    # else:
+    #     return HttpResponse(form['address_b'])
+
+
+def clear(request):
+    return HttpResponse("<p id='id_quotation'> </p>")
 
 
 # mock for tests

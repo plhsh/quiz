@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.add_quotation_cities, name='add_quotation_cities'),
     path('get_addresses/', views.get_addresses, name='get_addresses'),
+    path('clear/', views.clear, name='clear'),
     path('price/', views.show_price, name='price') # mock for tests
 
 ]
