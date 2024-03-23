@@ -4,6 +4,7 @@ from django.db.models import Q
 from rbuilder.models import Locations, Links, Quotations, Cities
 from django.urls import reverse_lazy
 from rbuilder.forms import LocationsForm
+from django.core.exceptions import ObjectDoesNotExist
 import logging
 
 
@@ -41,38 +42,41 @@ def add_quotation_cities(request):
         except Exception as e:
             logger.error(f"Ошибка: {e}")  # Логируем ошибку
             # Возвращаем сообщение об ошибке или перенаправляем на страницу с ошибкой
-            return HttpResponse(f"Произошла ошибка при обработке вашего запроса.{e}  {price}", status=500)
+            return HttpResponse(f"An error occurred processing your request.{e}  {price}", status=500)
     if request.method == 'GET':
         form = LocationsForm()
         return render(request, 'quotation_cities.html', {'form': form})
 
 
+# def get_addresses(request):
+#     if request.META['HTTP_HX_TARGET'] == "id_city_a_selects":
+#         ct_a = request.GET.get('city_a')
+#         ct = Cities.objects.filter(pk=ct_a).first()
+#         form = LocationsForm(initial={"city_a": ct})
+#         return render(request, 'partials/addresses_a.html', {"form": form})
+#     elif request.META['HTTP_HX_TARGET'] == "id_city_b_selects":
+#         ct_b = request.GET.get('city_b')
+#         ct = Cities.objects.filter(pk=ct_b).first()
+#         form = LocationsForm(initial={"city_b": ct})
+#         return render(request, 'partials/addresses_b.html', {"form": form})
+
 def get_addresses(request):
-    if request.META['HTTP_HX_TARGET'] == "id_city_a_selects":
-        ct_a = request.GET.get('city_a')
-        # print(ct_a)
-        ct = Cities.objects.filter(pk=ct_a).first()
-        # print(ct)
-        form = LocationsForm(initial={"city_a": ct})
-        #
-        # print("after", form.fields['address_a'].__dict__)
-        # print(form['city_a'])
-        return render(request, 'partials/addresses_a.html', {"form": form})
-    elif request.META['HTTP_HX_TARGET'] == "id_city_b_selects":
-        ct_b = request.GET.get('city_b')
-        # print(ct_a)
-        ct = Cities.objects.filter(pk=ct_b).first()
-        # print(ct)
-        form = LocationsForm(initial={"city_b": ct})
-        #
-        # print("after", form.fields['address_a'].__dict__)
-        # print(form['city_a'])
-        return render(request, 'partials/addresses_b.html', {"form": form})
-    # form = LocationsForm(request.GET)
-    # if request.META['HTTP_HX_TARGET'] == "id_address_a":
-    #     return render(request, 'partials/addresses_a.html', {'form': form})
-    # else:
-    #     return HttpResponse(form['address_b'])
+    try:
+        if request.META['HTTP_HX_TARGET'] == "id_city_a_selects":
+            ct_a = request.GET.get('city_a')
+            ct = Cities.objects.get(pk=ct_a)
+            form = LocationsForm(initial={"city_a": ct})
+            return render(request, 'partials/addresses_a.html', {"form": form})
+        elif request.META['HTTP_HX_TARGET'] == "id_city_b_selects":
+            ct_b = request.GET.get('city_b')
+            ct = Cities.objects.get(pk=ct_b)
+            form = LocationsForm(initial={"city_b": ct})
+            return render(request, 'partials/addresses_b.html', {"form": form})
+    except Exception as e:
+        # Логируем ошибку
+        logger.error(f"Error processing request: {e}")
+        return HttpResponse(f"An error occurred processing your request.{e}", status=500)
+        # return render(request, 'error.html', {'error_message': 'An error occurred processing your request.'})
 
 
 def clear(request):
